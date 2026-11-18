@@ -1,7 +1,7 @@
 // Everything the player sees: the deep-space forge, the crystals, the paddle
 // and sparks, the HUD and the screens. The world is drawn in a fixed 1280x720
 // space, scaled to fit the window with letterboxing.
-import { BALL, BRICK, FIELD, PADDLE, POWERUP, VIEW_H, VIEW_W } from './config.js';
+import { BALL, BRICK, FIELD, LEVEL_COUNT, PADDLE, POWERUP, VIEW_H, VIEW_W } from './config.js';
 import { COLORS } from './levels.js';
 import { shardStyle } from './world.js';
 
@@ -304,7 +304,7 @@ export function createRenderer(canvas) {
     ctx.textAlign = 'center';
     ctx.font = 'bold 15px sans-serif';
     ctx.fillStyle = '#8fa8d8';
-    ctx.fillText(`LEVEL ${state.level}/${5} · ${state.levelName}`, VIEW_W / 2, 22);
+    ctx.fillText(`LEVEL ${state.level}/${LEVEL_COUNT} · ${state.levelName}`, VIEW_W / 2, 22);
     const total = state.bricks.reduce((n, b) => n + (b.kind === 'S' ? 0 : 1), 0) || 1;
     const done = 1 - state.bricksLeft / total;
     ctx.fillStyle = 'rgba(255,255,255,0.14)';
